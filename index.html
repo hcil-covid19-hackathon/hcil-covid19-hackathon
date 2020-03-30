@@ -6,6 +6,32 @@
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
         crossorigin="anonymous">
     </script>
+
+    <style>
+        .collapsible {
+        background-color: #777;
+        color: white;
+        cursor: pointer;
+        padding: 18px;
+        width: 100%;
+        border: none;
+        text-align: left;
+        outline: none;
+        font-size: 15px;
+        }
+
+        .active, .collapsible:hover {
+        background-color: #555;
+        }
+
+        .schedulecontent {
+        padding: 0 18px;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.2s ease-out;
+        background-color: #f1f1f1;
+        }        
+    </style>
     
 </head>
 <body>
@@ -13,10 +39,26 @@
     <div id="schedule"></div>
     <script>
         var scheduleShown = false;
-        $(document).ready( function() {
+        $(document).ready( function() {            
             $("#load_schedule").on("click", function() {
                 if(!scheduleShown){
-                    $("#schedule").load("schedule.html");
+                    $("#schedule").load("schedule.html", function( response, status, xhr ) {
+                        var coll = document.getElementsByClassName("collapsible");
+                        var i;
+
+                        for (i = 0; i < coll.length; i++) {
+                        coll[i].addEventListener("click", function() {
+                            this.classList.toggle("active");
+                            var content = this.nextElementSibling;
+                            if (content.style.maxHeight){
+                            content.style.maxHeight = null;
+                            } else {
+                            content.style.maxHeight = content.scrollHeight + "px";
+                            } 
+                        });
+                        }
+                    });
+
                     scheduleShown = true;
                 } else {
                     var node = document.getElementById("schedule");
