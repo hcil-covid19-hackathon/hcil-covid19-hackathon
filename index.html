@@ -9,8 +9,8 @@
 
     <style>
         .collapsible {
-        background-color: #777;
-        color: white;
+        background-color: rgb(172, 172, 172);
+        color: black;
         cursor: pointer;
         padding: 18px;
         width: 100%;
@@ -21,7 +21,7 @@
         }
 
         .active, .collapsible:hover {
-        background-color: #555;
+        background-color: rgb(150, 221, 109);
         }
 
         .schedulecontent {
@@ -29,8 +29,16 @@
         max-height: 0;
         overflow: hidden;
         transition: max-height 0.2s ease-out;
-        background-color: #f1f1f1;
-        }        
+        
+        }   
+        .scheduleday tr:nth-child(even){background-color: #f2f2f2;}
+        .scheduleday tr:hover {background-color: #ddd;}
+        .scheduleday th, td {
+            padding: 15px;
+            text-align: left;
+        }
+
+     
     </style>
     
 </head>
