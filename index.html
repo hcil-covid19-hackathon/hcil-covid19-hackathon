@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
+<title>Hack COVID</title>
 <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <script
         src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
@@ -8,6 +10,33 @@
     </script>
 
     <style>
+
+        body {
+            background-image: url(images/unsplashbg.jpg);
+            background-size:     cover;                      /* <------ */
+            background-repeat:   no-repeat;
+        }
+
+        #load_registration{
+            width:10%;
+            height:auto;
+        }
+
+        .center {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 50%;
+            min-width: 450px;
+        }
+
+        .centerfull{
+            padding: 0 18px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
         .collapsible {
             background-color: rgb(172, 172, 172);
             color: black;
@@ -37,6 +66,7 @@
             width: 100%;
         }
 
+        .scheduleday tr:nth-child(odd){background-color: #ffffff;}
         .scheduleday tr:nth-child(even){background-color: #f2f2f2;}
         .scheduleday tr:hover {background-color: #ddd;}
         .scheduleday th, td {
@@ -44,45 +74,42 @@
             text-align: left;
         }
 
-     
+        .button {
+            background-color: rgb(150, 221, 109); /* Green */
+            border: none;
+            color: black;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+        }
+
+
     </style>
     
 </head>
 <body>
-    <a href ="#" id="load_schedule"> SCHEDULE </a>
-    <div id="schedule"></div>
-    <script>
-        var scheduleShown = false;
-        $(document).ready( function() {            
-            $("#load_schedule").on("click", function() {
-                if(!scheduleShown){
-                    $("#schedule").load("schedule.html", function( response, status, xhr ) {
-                        var coll = document.getElementsByClassName("collapsible");
-                        var i;
+    <img src="/images/hack-poster_01.gif" alt="" class="center">
+    <div class="center">
+        <table style="width:100%;">
+            <tr>
+                <a href ="http://www.cs.umd.edu/users/ben/" id="keynote"> <img src="images/hack-poster_07.jpg"> </a>            
+            </tr>
+            <tr>
+                <a href ="https://docs.google.com/forms/d/1K8pgqcqtS6zpbKOhCV6dDFJbhW_WmuCqepewcak-VYQ/edit?usp=sharing" id="load_registration"> 
+                    <img src="/images/hack-poster_05.gif" alt="">
+                </a>        
+            </tr>
+        </table>
+        <a href ="#" id="load_schedule" class="centerfull"> <button class="button" >Schedule</button></a>
+        <div id="schedule"></div>
 
-                        for (i = 0; i < coll.length; i++) {
-                        coll[i].addEventListener("click", function() {
-                            this.classList.toggle("active");
-                            var content = this.nextElementSibling;
-                            if (content.style.maxHeight){
-                            content.style.maxHeight = null;
-                            } else {
-                            content.style.maxHeight = content.scrollHeight + "px";
-                            } 
-                        });
-                        }
-                    });
+    </div>
 
-                    scheduleShown = true;
-                } else {
-                    var node = document.getElementById("schedule");
-                    while (node.hasChildNodes()) {
-                        node.removeChild(node.lastChild);
-                    }
-                    scheduleShown = false;
-                }
-            });
-        });
-    </script>
+    <img src="/images/hcil-logo.png" alt="" class="centerfull" style="max-width:120px; bottom:10px;">
+
+    <script src="schedule.js"></script>
+        
 </body>
 </html>
