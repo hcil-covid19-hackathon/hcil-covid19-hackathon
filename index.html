@@ -110,6 +110,14 @@
     <img src="/images/hcil-logo.png" alt="" class="centerfull" style="max-width:120px; bottom:10px;">
 
     <script src="schedule.js"></script>
+    <script>
+        //hack to deal with ugliness in center for mobile
+        if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+            for(obj in document.getElementsByClassName("center")){
+                obj.style = "width: 90%;"
+            }
+        }
+    </script>
         
 </body>
 </html>
