@@ -113,8 +113,9 @@
     <script>
         //hack to deal with ugliness in center for mobile
         if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-            for(obj in document.getElementsByClassName("center")){
-                obj.style = "width: 90%;"
+            var centers = document.getElementsByClassName("center")
+            for (var i = 0; i < centers.length; i++) {
+                centers.item(i).style = "width: 90%;"
             }
         }
     </script>
