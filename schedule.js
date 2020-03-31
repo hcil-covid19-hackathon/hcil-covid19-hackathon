@@ -1,6 +1,7 @@
 var scheduleShown = false;
 $(document).ready( function() {            
-    $("#load_schedule").on("click", function() {
+    $("#load_schedule").on("click", function($e) {
+        $e.preventDefault();
         if(!scheduleShown){
             $("#schedule").load("schedule.html", function( response, status, xhr ) {
                 var coll = document.getElementsByClassName("collapsible");
